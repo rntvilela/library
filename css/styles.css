@@ -81,9 +81,13 @@ th {
 
 td {
 	width: 180px;
-	height: 25px;
 	text-align: center;
 	background-color: #0369a1;
+}
+
+td.btn {
+	width: 80px;
+	font-size: 13px;
 }
 
 #form {

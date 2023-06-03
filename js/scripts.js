@@ -28,32 +28,52 @@ function displayBookOnTable() {
 		var td_author = document.createElement("td");
 		var	td_pages = document.createElement("td");
 		var td_read = document.createElement("td");
-		var remove_btn = document.createElement("div");
+		var remove_btn = document.createElement("td");
+		var toggle_btn = document.createElement("td");
 		
 		td_title.textContent = element.title;
 		td_author.textContent = element.author;
 		td_pages.textContent = element.pages;
 		td_read.textContent = element.read;
+		
 		remove_btn.classList.add('btn');
 		remove_btn.classList.add('remove-btn');
 		remove_btn.textContent = 'Remove';
 		remove_btn.setAttribute('data-index', i);
 
+		toggle_btn.classList.add('btn');
+		toggle_btn.classList.add('toggle-btn');
+		toggle_btn.textContent = 'Toggle';
+		toggle_btn.setAttribute('data-index', i);
+		
 		table.appendChild(tr);
 		tr.appendChild(td_title);
 		tr.appendChild(td_author);
 		tr.appendChild(td_pages);
 		tr.appendChild(td_read);
 		tr.appendChild(remove_btn);
+		tr.appendChild(toggle_btn);
 		i++;
 	});
 	
 	const remove_btn = document.querySelectorAll(".remove-btn");
+	const toggle_btn = document.querySelectorAll(".toggle-btn");
 	
 	remove_btn.forEach( button => {
 		button.addEventListener('click', () => {
 			let index = button.getAttribute('data-index');
 			myLibrary.splice(index, 1);
+			displayBookOnTable();
+		});
+	});
+	
+	toggle_btn.forEach( button => {
+		button.addEventListener('click', () => {
+			let index = button.getAttribute('data-index');
+			if (myLibrary[index]['read'] === 'not read yet') 
+				myLibrary[index]['read'] = 'already read'; 
+			else
+				myLibrary[index]['read'] = 'not read yet';
 			displayBookOnTable();
 		});
 	});
