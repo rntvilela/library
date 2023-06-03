@@ -20,24 +20,42 @@ function displayBookOnTable() {
 	while (table.rows.length > 1) {
 		  table.deleteRow(1);
 	}
-
+	
+	let i = 0;
 	myLibrary.forEach(element => {
 		var tr = document.createElement("tr");
 		var td_title = document.createElement("td");
 		var td_author = document.createElement("td");
 		var	td_pages = document.createElement("td");
 		var td_read = document.createElement("td");
+		var remove_btn = document.createElement("div");
 		
 		td_title.textContent = element.title;
 		td_author.textContent = element.author;
 		td_pages.textContent = element.pages;
 		td_read.textContent = element.read;
+		remove_btn.classList.add('btn');
+		remove_btn.classList.add('remove-btn');
+		remove_btn.textContent = 'Remove';
+		remove_btn.setAttribute('data-index', i);
 
 		table.appendChild(tr);
 		tr.appendChild(td_title);
 		tr.appendChild(td_author);
 		tr.appendChild(td_pages);
 		tr.appendChild(td_read);
+		tr.appendChild(remove_btn);
+		i++;
+	});
+	
+	const remove_btn = document.querySelectorAll(".remove-btn");
+	
+	remove_btn.forEach( button => {
+		button.addEventListener('click', () => {
+			let index = button.getAttribute('data-index');
+			myLibrary.splice(index, 1);
+			displayBookOnTable();
+		});
 	});
 }
 
@@ -54,8 +72,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	const read = document.querySelectorAll('input[name="read"]');
 	
 	const go_back = document.getElementById('back');
-
-	displayBookOnTable();
 
 	add_new.addEventListener('click', () => {
 		library.style.display = "none";
@@ -78,12 +94,11 @@ document.addEventListener('DOMContentLoaded', function() {
 				library.style.display = "grid";
 				form.style.display = "none";
 				displayBookOnTable();
-				return;
 			}
 		});
-
 	});
-
+	
+	displayBookOnTable();
 });
 
 let book1 = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet");
