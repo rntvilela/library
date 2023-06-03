@@ -10,42 +10,52 @@ html, body {
 	font-family: "JetBrains Mono", sans-serif;
 	font-size: 20px;
 	background-color: #27272a;
+	color: #f9fafb;
 }
 
 .grid-container {
 	display: grid;
-	grid-template: 16% auto / 60%;
+	grid-template: 20% auto / 60%;
 	height: 100%;
 	justify-content: center;
 }
 
 .header {
 	display: grid;
-	grid-template-rows: repeat(3, 1fr);
+	grid-template: repeat(3, 1fr) / 42% 16% 42%;
 	justify-content: center;
 	align-items: center;
 	align-content: center;
 	text-align: center;
 	padding: 10px;
 	color: #f9fafb;
-	background-color: #065f46;
+	background-color: #082f49;
 }
 
 .library-title {
-	font-size: 35px;
+	font-size: 40px;
+	grid-area: 1 / 1 / 1 / 4; 
+}
+
+.library-disc {
+	font-size: 25px;
+	grid-area: 2 / 1 / 2 / 4;
+}
+
+#new-book {
+	grid-area: 3 / 2 / 4 / 3;
 }
 
 .btn {
-	font-size: 15px;
+	font-size: 18px;
 	color: #f9fafb;
 	font-family: "JetBrains Mono", sans-serif;
 	padding: 10px;
 	border-radius: 15px;
 	background-color: #27272a;
-	margin-left: 18px;
-	margin-right: 18px;
 	border: none;
 	box-shadow: 0px 2px 5px #27272a;
+	text-align: center;
 }
 
 .btn:active {
@@ -54,29 +64,67 @@ html, body {
 }
 
 #library {
-	display: flex;
-	background-color: #a7f3d0;
-	text-align: center;
+	display: grid;
+	background-color: #3f3f46;
+	text-align: start;
 	align-items: start;
 	justify-content: center;
 	font-size: 15px;
 }
 
 th {
-	padding: 10px 25px 10px 25px;
-	background-color: #10b981; 
+	width: 180px;
+	height: 30px;
+	text-align: center;
+	background-color: #0c4a6e; 
 }
 
 td {
-	padding: 10px 25px 10px 25px;
-	background-color: #6ee7b7;
+	width: 180px;
+	height: 25px;
+	text-align: center;
+	background-color: #0369a1;
 }
 
 #form {
 	display: none;
-	background-color: #a7f3d0;
+	grid-template: 37% auto / 42% 16% 42%;
+	background-color: #3f3f46;
 	text-align: center;
 	align-items: start;
 	justify-content: center;
 	font-size: 15px;
+}
+
+#library-form {
+	margin-top: 20px;
+}
+
+#library-form>input[type="text"], input[type="number"]{
+	width: 350px;
+	height: 20px;
+	font-family: "JetBrains Mono", sans-serif;
+	border-radius: 8px;
+	font-size: 14px;
+}
+
+#library-form>input {
+	margin: 5px;
+}
+
+
+#library-form>label {
+	margin: 5px;
+}
+
+.input {
+	grid-area: 1 / 1 / 2 / 4;
+}
+
+.btn-submit {
+	width: 16%;
+}
+
+#back {
+	grid-area: 2 / 2 / 3 / 3;
 }

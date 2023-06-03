@@ -52,12 +52,19 @@ document.addEventListener('DOMContentLoaded', function() {
 	const author = document.getElementById('author');
 	const pages = document.getElementById('pages');
 	const read = document.querySelectorAll('input[name="read"]');
+	
+	const go_back = document.getElementById('back');
 
 	displayBookOnTable();
 
 	add_new.addEventListener('click', () => {
 		library.style.display = "none";
-		form.style.display = "flex";
+		form.style.display = "grid";
+	});
+	
+	back.addEventListener('click', () => {
+		library.style.display = "grid";
+		form.style.display = "none";
 	});
 
 	form.addEventListener('submit', function() {
@@ -68,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				var book = new Book(title.value, author.value, pages.value, op.value);
 				addBookToLibrary(book);
 
-				library.style.display = "flex";
+				library.style.display = "grid";
 				form.style.display = "none";
 				displayBookOnTable();
 				return;
