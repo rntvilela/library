@@ -11,9 +11,9 @@
 			<div class="header">
 				<div class="library-title">Library</div>
 				<div>A simple library</div>			
-				<div class="btn">Add New Book</div>
+				<div id="new-book" class="btn">Add New Book</div>
 			</div>
-			<div class="library">
+			<div id="library">
 				<table id="library-table">
 					<tr>
 						<th>Title</th>
@@ -22,6 +22,21 @@
 						<th>Read</th>
 					</tr>
 				</table>
+			</div>
+			<div id="form">
+				<form id="library-form">
+					<label for="title">Title</label><br>
+					<input type="text" id="title" name="title" required maxlength="20"><br>
+					<label for="author">Author</label><br>
+					<input type="text" id="author" name="author" required maxlength="20"><br>
+					<label for="Pages">Pages</label><br>
+					<input type="number" id="pages" name="pages" required min="1" max="3000"><br>
+					<input type="radio" id="read" name="read" value="already read" checked>
+					<label for="read">Already Read</label>
+					<input type="radio" id="not-read" name="read" value="not read yet">
+					<label for="not-read">Not Read Yet</label><br>
+					<input type="submit" class="btn" value="Send">
+				</form>
 			</div>
 		</div>
 	</body>
